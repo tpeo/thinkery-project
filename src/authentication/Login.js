@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../firebase.js";
+import firebase, { microsoftProvider } from "../firebase.js";
 
 const { innerHeight: height, innerWidth: width } = window;
 
@@ -21,22 +21,40 @@ const Login = ({}) => {
   const [password, setPassword] = useState("");
 
   const logIn = () => {
-    console.log(email);
-    console.log(password);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
-        // ...
+        console.log(userCredential.user);
       })
       .catch((error) => {
-        console.log("error");
         var errorCode = error.code;
-        var errorMessage = error.message;
+        console.log(error.message);
       });
   };
+
+  // firebase
+  //   .auth()
+  //   .getRedirectResult()
+  //   .then((result) => {
+  //     // IdP data available in result.additionalUserInfo.profile.
+  //     // ...
+
+  //     console.log("HFHSJKHKSHKJHFK");
+
+  //     /** @type {firebase.auth.OAuthCredential} */
+  //     var credential = result.credential;
+  //     console.log(result);
+
+  //     // OAuth access and id tokens can also be retrieved:
+  //     var accessToken = credential.accessToken;
+  //     var idToken = credential.idToken;
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     // Handle error.
+  //   });
 
   return (
     <div
@@ -55,14 +73,14 @@ const Login = ({}) => {
           style={styles.input}
           placeholder="Email"
           value={email}
-          onChange={(event) => setEmail(event.nativeEvent.text)}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <input
           style={styles.input}
           placeholder="Password"
           securetextEntry
           value={password}
-          onChange={(event) => setPassword(event.nativeEvent.text)}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <button
           style={{
@@ -75,7 +93,7 @@ const Login = ({}) => {
             alignSelf: "center",
             marginBottom: 10,
           }}
-          onPress={logIn}
+          onClick={logIn}
         >
           <text style={{ fontWeight: "bold", fontSize: 18 }}>Log In</text>
         </button>

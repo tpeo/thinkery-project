@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase, { db } from "../firebase.js";
+import firebase from "../firebase.js";
 
 const { innerHeight: height, innerWidth: width } = window;
 
@@ -29,17 +29,7 @@ const Create = ({}) => {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
-        var userRef = db.collection("users").doc(user.uid);
-
-        userRef.set({
-          uid: user.uid,
-          firstName,
-          lastName,
-          phone,
-          email,
-        });
-        // ...
+        console.log(userCredential);
       })
       .catch((error) => {
         console.log("error");
@@ -66,7 +56,7 @@ const Create = ({}) => {
           style={styles.input}
           placeholder="First Name"
           value={firstName}
-          onChange={(event) => setFirstName(event.nativeEvent.text)}
+          onChange={(event) => setFirstName(event.target.value)}
         />
         <input
           style={styles.input}
@@ -78,14 +68,14 @@ const Create = ({}) => {
           style={styles.input}
           placeholder="Email"
           value={email}
-          onChange={(event) => setEmail(event.nativeEvent.text)}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <input
           style={styles.input}
           placeholder="Password"
           securetextEntry
           value={password}
-          onChange={(event) => setPassword(event.nativeEvent.text)}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <input
           style={styles.input}
@@ -104,7 +94,7 @@ const Create = ({}) => {
             justifyContent: "center",
             alignSelf: "center",
           }}
-          onPress={create}
+          onClick={create}
         >
           <text style={{ fontWeight: "bold", fontSize: 18 }}>
             Create Account
