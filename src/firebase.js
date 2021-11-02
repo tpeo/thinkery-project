@@ -11,14 +11,8 @@ const firebaseDevConfig = {
   measurementId: "G-ZZTDWB3YDB",
 };
 
-const app = firebase.initializeApp(firebaseDevConfig);
+firebase.initializeApp(firebaseDevConfig);
 
 // export const db = getFirestore(app);
-// Initialize Provider & Export
-export const microsoftProvider = new firebase.auth.OAuthProvider(
-  "microsoft.com"
-).setCustomParameters({
-  // tenant: "acfa6259-facb-4402-bdc5-0fe06a08d49d",
-  // prompt: "consent",
-});
+
 export default firebase;
