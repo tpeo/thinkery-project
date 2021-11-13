@@ -4,6 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import firebase from "./firebase";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./reducers/reducer";
+
+const store = createStore(reducer);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -15,9 +20,11 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

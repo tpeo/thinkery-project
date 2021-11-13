@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import firebase, { microsoftProvider } from "../firebase.js";
+import { useSelector, useDispatch } from "react-redux";
 
 const { innerHeight: height, innerWidth: width } = window;
 
@@ -17,6 +18,8 @@ const styles = {
 };
 
 const Login = ({}) => {
+  const user = useSelector((state) => state.user);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

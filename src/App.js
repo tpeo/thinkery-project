@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Login from "./authentication/Login";
 import Create from "./authentication/Create";
+import { connect } from "react-redux";
 
 function App() {
   return (
@@ -12,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);
