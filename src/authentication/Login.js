@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import firebase, { microsoftProvider } from "../firebase.js";
 import { useSelector, useDispatch } from "react-redux";
-=======
 import firebase from "../firebase.js";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 
 import Logo from "./../img/logo.png";
->>>>>>> c373a0ed04d819283a3e4ec79841dae53922920d
 
 const { innerHeight: height, innerWidth: width } = window;
 
@@ -30,25 +26,24 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const logIn = () => {
-  //   console.log(email);
-  //   console.log(password);
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       var user = userCredential.user;
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       console.log("error");
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //     });
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
+  const logIn = () => {
+    console.log(email);
+    console.log(password);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        console.log("signed in ");
+        // ...
+      })
+      .catch((error) => {
+        console.log("error");
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      });
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -141,7 +136,12 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button
+          block
+          size="lg"
+          type="submit"
+          disabled={email.length == 0 || password.length == 0}
+        >
           Login
         </Button>
       </Form>

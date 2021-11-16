@@ -10,15 +10,6 @@ import reducer from "./reducers/reducer";
 
 const store = createStore(reducer);
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    var uid = user.uid;
-    console.log(uid);
-  } else {
-    console.log("signed out");
-  }
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

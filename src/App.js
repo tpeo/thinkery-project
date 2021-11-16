@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+import firebase from "./firebase";
 import logo from "./logo.svg";
 import "./style/App.css";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,6 +11,17 @@ import { connect } from "react-redux";
 // import Create from "./authentication/Create";
 
 function App() {
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        var uid = user.uid;
+        console.log(uid);
+      } else {
+        console.log("signed out");
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Router history={History}>
