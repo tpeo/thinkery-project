@@ -8,9 +8,9 @@ import {
 } from "antd";
 
 import AuthService from "../../services/AuthService";
-
-import Logo from "./../../img/logo/logo.png";
-import "../../pages/Login/style/Login.css";
+import { GlobalContext } from "../../state/GlobalState";
+import Logo from "./../../img/logo.png";
+import "../../pages/Login/Login.css";
 import { resolveOnChange } from "antd/lib/input/Input";
 
 export default class LoginForm extends PureComponent {
@@ -49,15 +49,6 @@ export default class LoginForm extends PureComponent {
       History.push("/dashboard");
     }
 
-    // get all patients info
-    const patientService = new PatientService();
-    var patients = await patientService.getAllPatients();
-    if (patients.status == "Success") {
-      globalState.updatePatients(patients["AWSresponse"]["Items"]);
-    }
-    // localStorage.setItem("isLoggedIn", true);
-    // const isLoggedIn = localStorage.getItem("isLoggedIn");
-    // console.log("isLoggedIn", isLoggedIn);
     console.log(this.state.firstName);
   };
 

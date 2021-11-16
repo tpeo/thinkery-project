@@ -5,12 +5,12 @@ import { Router, Route, Switch, Redirect } from "react-router-dom";
 import LoginPage from "../pages/Login/LoginPage";
 // import ForgotPage from "../pages/Login/ForgotPage";
 // import SignUpPage from "../pages/SignUp/SignUpPage";
-// import MainPage from "../pages/Dashboard/MainPage";
+import MainPage from "../pages/Employees/MainPage";
 // import PatientPage from "../pages/PatientPage/PatientPage";
 // import SettingsPage from "../pages/settings/SettingsPage";
 
 // import global navbar
-import GlobalNavigationBar from "./GlobalNavigationBar";
+import EmployeeNavigationBar from "./EmployeeNavigationBar";
 
 import { Layout } from "antd";
 
@@ -18,27 +18,18 @@ import { Layout } from "antd";
 
 import "../style/App.css";
 
-const { Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 export default class Routes extends PureComponent {
   constructor() {
     super();
-    this.state = {
-      collapsed: true,
-    };
   }
-
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
 
   authComponent = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     console.log("isLoggedIn", isLoggedIn);
     return isLoggedIn != null && isLoggedIn ? (
-      <Redirect to="/dashboard" />
+      <Redirect to="/orders" />
     ) : (
       <LoginPage></LoginPage>
     );
@@ -48,25 +39,24 @@ export default class Routes extends PureComponent {
     return (
       <Router history={History}>
         <Switch>
-          {/* <Route path="/" component={this.authComponent} exact />
-          <Route path="/retrieve_credentials" component={ForgotPage} exact />
+          {<Route path="/" component={this.authComponent} exact />
+          /*<Route path="/retrieve_credentials" component={ForgotPage} exact />
           <Route path="/signup" component={SignUpPage} exact /> */}
           <div>
             <Layout>
-              <Sider
+              <Header
                 style={{
                   overflow: "auto",
                   height: "auto",
-                  backgroundColor: "#ADE7F950",
+                  backgroundColor: "#B12F23",
                 }}
                 trigger={null}
-                collapsible
-                collapsed={this.state.collapsed}
               >
-                <GlobalNavigationBar toggleCollapsed={this.toggleCollapsed.bind(this)} />
-              </Sider>
+                <EmployeeNavigationBar />
+              </Header>
               <Content>
                 <Route path="/login" component={LoginPage} />
+                <Route path="/orders" component={MainPage} />
                 {/* <Route path="/dashboard" component={MainPage} />
                 <Route path="/patient" component={PatientPage} />
                 <Route path="/my_account" component={SettingsPage} /> */}

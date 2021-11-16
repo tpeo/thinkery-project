@@ -1,15 +1,15 @@
 import React from "react";
 
-import Logo from "./../../img/logo/logo.png";
+import Logo from "./../../img/logo.png";
 import LoginForm from "../../components/Login/LoginForm";
 
-import "./style/Login.css";
+import "./Login.css";
 
 function LoginPage() {
   return (
     <div className="LoginPageLayout">
       <div className="Logo">
-        <img src={Logo} alt="Path Software Logo"></img>
+        <img src={Logo} alt="Thinkery Software Logo"></img>
       </div>
       <LoginForm />
       <h3 className={"LabelReg"}>
