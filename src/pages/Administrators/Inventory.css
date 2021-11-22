@@ -1,0 +1,12 @@
+.ant-table-thead > tr >th{
+   color: white;
+   background: #B12F23 !important;
+ }
+
+ .Header {
+   text-align: left;
+   color: #B12F23;
+   font-weight: 700;
+   margin-bottom: 2%;
+   margin-left: 3%;
+ }

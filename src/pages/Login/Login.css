@@ -47,6 +47,10 @@
   margin-bottom: 5%;
 }
 
+.Form {
+  border-color: #B12F23;
+}
+
 .ForgotPassword {
   text-decoration: underline;
   display: "inline-block";

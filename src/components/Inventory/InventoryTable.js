@@ -2,6 +2,7 @@ import React from "react";
 // import Highlighter from "react-highlight-words";
 
 import { Input, Table, Row, Col, Space, Button } from "antd";
+import "./../../pages/Administrators/Inventory.css";
 
 import History from "../../navigation/History";
 
@@ -62,7 +63,7 @@ export default class InventoryTable extends React.Component {
       ];
 
       return (
-         <Table dataSource={data} columns={columns} />
+         <Table className="Table" dataSource={data} columns={columns} />
       );
     }
 }

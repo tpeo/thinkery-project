@@ -67,7 +67,7 @@ export default class EmployeeLoginForm extends PureComponent {
             name="email"
             rules={[{ message: "Please input your email!" }]}
             >
-            <Input placeholder="example@mail.com" />
+            <Input className="Form" placeholder="example@mail.com" />
             </Form.Item>
 
             <Form.Item className="SubmitFormButton">

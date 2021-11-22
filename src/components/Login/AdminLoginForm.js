@@ -67,7 +67,7 @@ export default class AdminLoginForm extends PureComponent {
               name="email"
               rules={[{ message: "Please input your email!" }]}
             >
-              <Input placeholder="example@mail.com" />
+              <Input className="Form" placeholder="example@mail.com" />
             </Form.Item>
 
             <Form.Item
@@ -75,7 +75,7 @@ export default class AdminLoginForm extends PureComponent {
               name="password"
               rules={[{ message: "Please input your password!" }]}
             >
-              <Input.Password placeholder="Password" />
+              <Input.Password className="Form" placeholder="Password" />
             </Form.Item>
             <Form.Item>
               <h3 className="ForgotPassword"
