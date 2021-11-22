@@ -6,20 +6,21 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./navigation/Routes";
 import History from "./navigation/History";
 import { connect } from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import Login from "./authentication/Login";
 // import Create from "./authentication/Create";
 
 function App() {
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        var uid = user.uid;
-        console.log(uid);
-      } else {
-        console.log("signed out");
-      }
-    });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     var uid = user.uid;
+    //     console.log(uid);
+    //   } else {
+    //     console.log("signed out");
+    //   }
+    // });
   }, []);
 
   return (

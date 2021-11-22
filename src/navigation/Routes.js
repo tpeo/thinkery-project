@@ -1,18 +1,16 @@
 import React, { PureComponent } from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 // import pages
 import LoginPage from "../pages/Login/LoginPage";
-// import ForgotPage from "../pages/Login/ForgotPage";
-// import SignUpPage from "../pages/SignUp/SignUpPage";
-import MainPage from "../pages/Employees/MainPage";
-// import PatientPage from "../pages/PatientPage/PatientPage";
-// import SettingsPage from "../pages/settings/SettingsPage";
-
-// import global navbar
-import EmployeeNavigationBar from "./EmployeeNavigationBar";
-
-import { Layout } from "antd";
+import EmployeeHome from "../pages/Employees/EmployeeHome";
+import Orders from "../pages/Employees/Orders";
+import Checkin from "../pages/Employees/Reservations/Checkin";
+import Checkout from "../pages/Employees/Reservations/Checkout";
+import Inventory from "../pages/Administrators/Inventory";
+import Employees from "../pages/Administrators/Employees";
+import AdminHome from "../pages/Administrators/AdminHome";
+import Layout from "./../pages/Layout";
 
 // import History from "./History";
 
@@ -29,7 +27,7 @@ export default class Routes extends PureComponent {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     console.log("isLoggedIn", isLoggedIn);
     return isLoggedIn != null && isLoggedIn ? (
-      <Redirect to="/orders" />
+      <Redirect to="/home" />
     ) : (
       <LoginPage></LoginPage>
     );
@@ -37,36 +35,23 @@ export default class Routes extends PureComponent {
 
   render() {
     return (
-      // <Router history={History}>
       <Switch>
-        {
-          <Route path="/" component={this.authComponent} exact />
-          /*<Route path="/retrieve_credentials" component={ForgotPage} exact />
-          <Route path="/signup" component={SignUpPage} exact /> */
-        }
-        <div>
-          <Layout>
-            <Header
-              style={{
-                overflow: "auto",
-                height: "auto",
-                backgroundColor: "#B12F23",
-              }}
-              trigger={null}
-            >
-              <EmployeeNavigationBar />
-            </Header>
-            <Content>
-              <Route path="/login" component={LoginPage} />
-              <Route path="/orders" component={MainPage} />
-              {/* <Route path="/dashboard" component={MainPage} />
-                <Route path="/patient" component={PatientPage} />
-                <Route path="/my_account" component={SettingsPage} /> */}
-            </Content>
-          </Layout>
-        </div>
+         <Route path="/" component={this.authComponent} exact />
+         {/*<Route path="/retrieve_credentials" component={ForgotPage} exact />
+         <Route path="/signup" component={SignUpPage} exact /> */}
+         <div>
+            <Layout>
+               <Route path="/login" component={LoginPage} />
+               <Route path='/orders' component={Orders}/>
+               <Route path='/reservations/checkin' component={Checkin}/>
+               <Route path='/reservations/checkout' component={Checkout}/>
+               <Route path='/inventory' component={Inventory}/>
+               <Route path='/employees' component={Employees}/>
+               {/* <Route path='/home' component={EmployeeHome}/> */}
+               <Route path='/home' component={AdminHome}/>
+            </Layout>
+         </div>
       </Switch>
-      // </Router>
     );
   }
 }

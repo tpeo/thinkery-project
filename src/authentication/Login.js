@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import firebase from "../firebase.js";
+// import firebase from "../firebase.js";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
@@ -29,20 +29,20 @@ export default function Login() {
   const logIn = () => {
     console.log(email);
     console.log(password);
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        console.log("signed in ");
-        // ...
-      })
-      .catch((error) => {
-        console.log("error");
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      });
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     var user = userCredential.user;
+    //     console.log("signed in ");
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     console.log("error");
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //   });
   };
 
   function handleSubmit(event) {

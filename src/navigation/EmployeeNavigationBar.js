@@ -1,54 +1,35 @@
 import React, { PureComponent, useState } from "react";
 import History from "./History";
-
-import { Menu, Dropdown } from 'antd';
-import {
-  AppstoreOutlined,
-  UserOutlined,
-  MenuOutlined,
-  SearchOutlined,
-  LogoutOutlined,
-  SettingOutlined,
-  DownOutlined,
-} from "@ant-design/icons";
-
 import "./../style/App.css";
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import logo from './../logo.svg';
 
-const { SubMenu } = Menu;
-
-export default class EmployeeNavigationBar extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Menu
-          theme="light"
-          style={{ backgroundColor: "#B12F23" }}
-          defaultSelectedKeys={["1"]}
-          mode="horizontal"
-        >
-          <Menu.Item key="0">
-              thinkventory
-          </Menu.Item>
-          <SubMenu
-            onClick={() => History.push("/orders")}
-            key="1"
-            icon={<AppstoreOutlined />}
-            title="Orders"
-          >
-            <Menu.Item key="2">Check In</Menu.Item>
-            <Menu.Item key="3">Check Out</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            onClick={() => History.push("/reservations")}
-            key="4"
-            icon={<UserOutlined />}
-            title="Reservations"
-          >
-            <Menu.Item key="5">Check In</Menu.Item>
-            <Menu.Item key="6">Check Out</Menu.Item>
-          </SubMenu>
-        </Menu>
-      </div>
-    );
-  }
+// const EmployeeNavigationBar = () => {
+function EmployeeNavigationBar() {
+  return (
+    <Navbar collapseOnSelect fixed="top" expand="md" className="color-nav" variant="dark">
+      <Container>
+        <Navbar.Brand href="/home">
+          <img
+            src={logo}
+            width="50"
+            height="50"
+          />
+          thinkventory
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto" style={{ maxHeight: '100px' }} navbarScroll>
+            <Nav.Link href="/orders">Orders</Nav.Link>
+            <NavDropdown title="Reservations" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/reservations/checkout">Check Out</NavDropdown.Item>
+              <NavDropdown.Item href="/reservations/checkin">Check In</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
+
+export default EmployeeNavigationBar;

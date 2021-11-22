@@ -1,3 +1,4 @@
+@import "~antd/dist/antd.css";
 
 .App {
     text-align: center;
@@ -6,10 +7,22 @@
     justify-content: center;
 }
 
-.GlobalNavigationBar {
-    width: 100%;
-    padding-left: 2500px;
+.navbar-nav {
+   -webkit-flex-direction: row;
+   -ms-flex-direction: row;
+   flex-direction: row;
 }
+
+.color-nav {
+   background-color: #B12F23;
+   /* font-family: "Open Sans"; */
+}
+
+.site-layout-content {
+   min-height: 280px;
+   padding: 24px;
+   background: #fff;
+ }
 
 .logo {
     height: 20px;

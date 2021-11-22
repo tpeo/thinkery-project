@@ -9,7 +9,7 @@ function LoginPage() {
   return (
     <div className="LoginPageLayout">
       <div className="Logo">
-        <img src={Logo} alt="Thinkery Software Logo"></img>
+        <img src={Logo} alt="Thinkery Software Logo" width="60%"></img>
       </div>
       <LoginForm />
       <h3 className={"LabelReg"}>

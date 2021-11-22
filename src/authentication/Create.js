@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../firebase.js";
+// import firebase from "../firebase.js";
 
 const { innerHeight: height, innerWidth: width } = window;
 
@@ -24,19 +24,19 @@ const Create = ({}) => {
   const [password, setPassword] = useState("");
 
   const create = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log("error");
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-      });
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     console.log(userCredential);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error");
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     console.log(errorMessage);
+    //   });
   };
 
   return (
