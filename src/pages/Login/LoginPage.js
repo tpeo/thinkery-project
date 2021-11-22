@@ -1,18 +1,35 @@
 import React from "react";
 
 import Logo from "./../../img/logo.png";
-import LoginForm from "../../components/Login/LoginForm";
+import AdminLoginForm from "../../components/Login/AdminLoginForm";
+import EmployeeLoginForm from "../../components/Login/EmployeeLoginForm";
+import LoginNavigationBar from "./../../navigation/LoginNavigationBar"
+import { Row, Col, Container } from 'react-bootstrap';
 
 import "./Login.css";
 
 function LoginPage() {
   return (
     <div className="LoginPageLayout">
-      <div className="Logo">
-        <img src={Logo} alt="Thinkery Software Logo" width="60%"></img>
+      <LoginNavigationBar />
+      <div>
+        <h1 className="Logo">thinkventory</h1>
       </div>
-      <LoginForm />
-      <h3 className={"LabelReg"}>
+      <Row>
+        <Col className="LoginForm">
+          <p>
+            Employee Sign In
+          </p>
+          <EmployeeLoginForm />
+        </Col>
+        <Col className="LoginForm">
+          <p>
+            Administrator Sign In
+          </p>
+          <AdminLoginForm />
+        </Col>
+      </Row>
+      {/* <h3 className={"LabelReg"}>
         Don't have an account?&nbsp;
         <p
           className={"Link"}
@@ -33,8 +50,8 @@ function LoginPage() {
           History.push("/retrieve_credentials");
         }}
       >
-        Forgot your password?
-      </h3>
+        Forgot password?
+      </h3> */}
     </div>
   );
 }

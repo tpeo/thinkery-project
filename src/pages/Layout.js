@@ -2,7 +2,6 @@ import React from "react";
 import { Layout as Format} from 'antd';
 import EmployeeNavigationBar from "./../navigation/EmployeeNavigationBar";
 import AdminNavigationBar from "./../navigation/AdminNavigationBar";
-import { Row, Col, Container } from 'react-bootstrap';
 import "./../style/App.css";
 
 const { Header, Content, Footer } = Format;

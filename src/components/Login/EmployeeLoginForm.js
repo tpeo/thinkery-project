@@ -13,7 +13,7 @@ import Logo from "./../../img/logo.png";
 import "../../pages/Login/Login.css";
 import { resolveOnChange } from "antd/lib/input/Input";
 
-export default class LoginForm extends PureComponent {
+export default class EmployeeLoginForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,39 +56,31 @@ export default class LoginForm extends PureComponent {
     return (
       <GlobalContext.Consumer>
         {(globalState) => (
-          <Form
+            <Form
             name="basic"
             layout="vertical"
             initialValues={{ remember: true }}
             onFinish={(values) => this.onFinish(values, globalState)}
-          >
+         >
             <Form.Item
-              label="Email"
-              name="email"
-              rules={[{ message: "Please input your email!" }]}
+            label="Email"
+            name="email"
+            rules={[{ message: "Please input your email!" }]}
             >
-              <Input placeholder="example@mail.com" />
-            </Form.Item>
-
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[{ message: "Please input your password!" }]}
-            >
-              <Input.Password placeholder="Password" />
+            <Input placeholder="example@mail.com" />
             </Form.Item>
 
             <Form.Item className="SubmitFormButton">
-              <Button
-                className="LoginButton"
-                type="primary"
-                size="large"
-                htmlType="submit"
-              >
-                Log In
-              </Button>
+            <Button
+               className="LoginButton"
+               type="primary"
+               size="large"
+               htmlType="submit"
+            >
+               Sign In
+            </Button>
             </Form.Item>
-          </Form>
+         </Form>
         )}
       </GlobalContext.Consumer>
     );
