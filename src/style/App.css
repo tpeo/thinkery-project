@@ -5,6 +5,7 @@
     flex: 1;
     align-items: center;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .navbar-nav {
@@ -15,13 +16,23 @@
 
 .color-nav {
    background-color: #B12F23;
-   /* font-family: "Open Sans"; */
+   font-weight: 600;
+   font-size: 16px;
+   font-family: 'Open Sans', sans-serif;
 }
+
+.navbrand {
+   font-size: 22px;
+   font-weight: 800;
+   font-family: 'Open Sans', sans-serif;
+ }
 
 .site-layout-content {
    min-height: 280px;
    padding: 24px;
    background: #fff;
+   font-weight: 600;
+   font-family: 'Open Sans', sans-serif;
  }
 
 .logo {

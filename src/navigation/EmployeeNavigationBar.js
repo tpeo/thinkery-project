@@ -9,7 +9,7 @@ function EmployeeNavigationBar() {
   return (
     <Navbar collapseOnSelect fixed="top" expand="md" className="color-nav" variant="dark">
       <Container>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand className="navbrand" href="/home">
           <img
             src={logo}
             width="50"

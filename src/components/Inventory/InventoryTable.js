@@ -63,7 +63,7 @@ export default class InventoryTable extends React.Component {
       ];
 
       return (
-         <Table className="Table" dataSource={data} columns={columns} />
+         <Table dataSource={data} columns={columns} />
       );
     }
 }

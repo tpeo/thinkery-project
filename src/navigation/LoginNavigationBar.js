@@ -8,7 +8,7 @@ const LoginNavigationBar = () => {
   return (
     <Navbar collapseOnSelect fixed="top" expand="md" className="color-nav" variant="dark">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand className="navbrand" href="/">
           <img
             src={logo}
             width="50"

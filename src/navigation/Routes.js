@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 // import pages
 import LoginPage from "../pages/Login/LoginPage";
+import ForgotPage from "../pages/Login/ForgotPage";
 import EmployeeHome from "../pages/Employees/EmployeeHome";
 import Orders from "../pages/Employees/Orders";
 import Checkin from "../pages/Employees/Reservations/Checkin";
@@ -11,6 +12,7 @@ import Inventory from "../pages/Administrators/Inventory";
 import Employees from "../pages/Administrators/Employees";
 import AdminHome from "../pages/Administrators/AdminHome";
 import Layout from "./../pages/Layout";
+import NotFound from "../pages/NotFound/NotFound";
 
 // import History from "./History";
 
@@ -36,21 +38,22 @@ export default class Routes extends PureComponent {
   render() {
     return (
       <Switch>
-         <Route path="/" component={this.authComponent} exact />
-         {/*<Route path="/retrieve_credentials" component={ForgotPage} exact />
-         <Route path="/signup" component={SignUpPage} exact /> */}
-         <div>
-            <Layout>
-               <Route path="/login" component={LoginPage} />
-               <Route path='/orders' component={Orders}/>
-               <Route path='/reservations/checkin' component={Checkin}/>
-               <Route path='/reservations/checkout' component={Checkout}/>
-               <Route path='/inventory' component={Inventory}/>
-               <Route path='/employees' component={Employees}/>
+         <Route exact path="/" component={this.authComponent} />
+         <Route exact path="/retrieve_credentials" component={ForgotPage} />
+         {/* <Route path="/signup" component={SignUpPage} exact />  */}
+         <Layout>
+            <Switch>
+               <Route exact path="/login" component={LoginPage} />
+               <Route exact path='/orders' component={Orders}/>
+               <Route exact path='/reservations/checkin' component={Checkin}/>
+               <Route exact path='/reservations/checkout' component={Checkout}/>
+               <Route exact path='/inventory' component={Inventory}/>
+               <Route exact path='/employees' component={Employees}/>
                {/* <Route path='/home' component={EmployeeHome}/> */}
-               <Route path='/home' component={AdminHome}/>
-            </Layout>
-         </div>
+               <Route exact path='/home' component={AdminHome}/>
+               <Route component={NotFound} />
+            </Switch>
+         </Layout>
       </Switch>
     );
   }
