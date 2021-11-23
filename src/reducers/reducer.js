@@ -29,8 +29,10 @@ const defaultState = {
     description: "",
     quantity: "",
     lastReorderDate: "",
+    instances: {}, // instanceID to true - want in form of object rather than list
   },
   instanceItem: {
+    itemID: "", // ID of corresponding item
     instanceID: "",
     name: "", // not sure if needed since contained in inventoryItem
     brand: "", // not sure if needed since contained in inventoryItem
@@ -42,6 +44,10 @@ const defaultState = {
     reservationStartDate: "", // current date
     reservationEndDate: "",
     description: "",
+  },
+  reservationItem: {
+    reservationID: "",
+    itemInstanceID: "", // can use this to get rest of the data
   },
 };
 
