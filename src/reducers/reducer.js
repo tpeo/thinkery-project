@@ -1,5 +1,8 @@
 const defaultState = {
-  user: {},
+  user: {
+    employeeID: "",
+    type: 0,
+  },
   orderRequest: {
     employeeID: "", // used to retrieve employee name/email
     priority: false,

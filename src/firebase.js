@@ -1,5 +1,4 @@
 import firebase from "firebase";
-// import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
 const firebaseDevConfig = {
   apiKey: "AIzaSyCA52LGn5sVno9yCi3bFKoR-PaEPvgboYk",
@@ -11,8 +10,5 @@ const firebaseDevConfig = {
   measurementId: "G-ZZTDWB3YDB",
 };
 
-firebase.initializeApp(firebaseDevConfig);
-
-// export const db = getFirestore(app);
-
+const app = firebase.initializeApp(firebaseDevConfig);
 export default firebase;

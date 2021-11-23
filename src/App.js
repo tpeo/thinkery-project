@@ -7,9 +7,6 @@ import Routes from "./navigation/Routes";
 import History from "./navigation/History";
 import { connect } from "react-redux";
 
-// import Login from "./authentication/Login";
-// import Create from "./authentication/Create";
-
 function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
