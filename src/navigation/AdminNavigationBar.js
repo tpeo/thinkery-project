@@ -2,7 +2,7 @@ import React, { PureComponent, useState } from "react";
 import History from "./History";
 import "./../style/App.css";
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-import logo from './../logo.svg';
+import logo from './../ThinkeryLogo.svg';
 
 const AdminNavigationBar = () => {
   return (
@@ -13,7 +13,7 @@ const AdminNavigationBar = () => {
             src={logo}
             width="50"
             height="50"
-          />
+          /> {  }
           thinkventory
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
