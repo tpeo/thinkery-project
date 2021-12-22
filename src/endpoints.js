@@ -14,6 +14,12 @@ function removeOrderRequest(orderRequestUid, updates = {}) {
   firebase.database().ref().update(updates);
 }
 
+function updateOrderRequest(orderRequestUid, key, value, updates = {}) {
+  updates["orderRequests/" + orderRequestUid + "/" + key] = value;
+
+  firebase.database().ref().update(updates);
+}
+
 /******************************************/
 
 function addEmployee(employeeObj, updates = {}) {
@@ -26,6 +32,12 @@ function addEmployee(employeeObj, updates = {}) {
 
 function removeEmployee(employeeUid, updates = {}) {
   updates["employees/" + employeeUid] = null;
+
+  firebase.database().ref().update(updates);
+}
+
+function updateEmployee(employeeUid, key, value, updates = {}) {
+  updates["employees/" + employeeUid + "/" + key] = value;
 
   firebase.database().ref().update(updates);
 }
@@ -46,6 +58,12 @@ function removeReservation(reservationUid, updates = {}) {
   firebase.database().ref().update(updates);
 }
 
+function updateReservation(reservationUid, key, value, updates = {}) {
+  updates["reservations/" + reservationUid + "/" + key] = value;
+
+  firebase.database().ref().update(updates);
+}
+
 /******************************************/
 
 function addInventoryItem(inventoryItemObj, updates = {}) {
@@ -58,6 +76,12 @@ function addInventoryItem(inventoryItemObj, updates = {}) {
 
 function removeInventoryItem(inventoryItemUid, updates = {}) {
   updates["inventory/" + inventoryItemUid] = null;
+
+  firebase.database().ref().update(updates);
+}
+
+function updateInventoryItem(inventoryItemUid, key, value, updates = {}) {
+  updates["inventory/" + inventoryItemUid + "/" + key] = value;
 
   firebase.database().ref().update(updates);
 }
@@ -94,15 +118,31 @@ function removeInventoryInstanceItem(
   firebase.database().ref().update(updates);
 }
 
+function updateInventoryInstanceItem(
+  inventoryInstanceUid,
+  key,
+  value,
+  updates = {}
+) {
+  updates["inventoryInstances/" + inventoryInstanceUid + "/" + key] = value;
+
+  firebase.database().ref().update(updates);
+}
+
 export default {
   addOrderRequest,
   removeOrderRequest,
+  updateOrderRequest,
   addEmployee,
   removeEmployee,
+  updateEmployee,
   addReservation,
   removeReservation,
+  updateReservation,
   addInventoryItem,
   removeInventoryItem,
+  updateInventoryItem,
   addInventoryInstanceItem,
   removeInventoryInstanceItem,
+  updateInventoryInstanceItem,
 };
