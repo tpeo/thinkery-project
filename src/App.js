@@ -18,6 +18,7 @@ import {
   removeOrderRequest,
   removeReservation,
 } from "./actions";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const onChildAddedOrChanged = (path, callback) => {
   firebase.database().ref(path).on("child_added", callback);
