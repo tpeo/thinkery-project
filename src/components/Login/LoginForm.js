@@ -8,7 +8,6 @@ import {
 } from "antd";
 
 import AuthService from "../../services/AuthService";
-import { GlobalContext } from "../../state/GlobalState";
 import Logo from "./../../img/logo.png";
 import "../../pages/Login/Login.css";
 import { resolveOnChange } from "antd/lib/input/Input";
@@ -54,7 +53,7 @@ export default class LoginForm extends PureComponent {
 
   render() {
     return (
-      <GlobalContext.Consumer>
+      <>
         {(globalState) => (
           <Form
             name="basic"
@@ -90,7 +89,7 @@ export default class LoginForm extends PureComponent {
             </Form.Item>
           </Form>
         )}
-      </GlobalContext.Consumer>
+      </>
     );
   }
 }
