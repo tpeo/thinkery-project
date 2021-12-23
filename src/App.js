@@ -73,6 +73,7 @@ function App() {
       if (user) {
         var uid = user.uid;
         console.log(uid);
+        // TODO: Set user in redux in the future once we have more info
       } else {
         console.log("signed out");
       }
