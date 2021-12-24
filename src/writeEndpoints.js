@@ -67,21 +67,21 @@ function updateReservation(reservationUid, key, value, updates = {}) {
 /******************************************/
 
 function addInventoryItem(inventoryItemObj, updates = {}) {
-  const inventoryItemUid = firebase.database().ref("inventory/").push().key;
-  inventoryItemObj.itemID = inventoryItemUid;
-  updates["inventory/" + inventoryItemUid] = inventoryItemObj;
+  // const inventoryItemUid = firebase.database().ref("inventory/").push().key;
+  // inventoryItemObj.itemID = inventoryItemUid;
+  updates["inventory/" + inventoryItemObj.itemID] = inventoryItemObj;
 
   firebase.database().ref().update(updates);
 }
 
-function removeInventoryItem(inventoryItemUid, updates = {}) {
-  updates["inventory/" + inventoryItemUid] = null;
+function removeInventoryItem(inventoryItemID, updates = {}) {
+  updates["inventory/" + inventoryItemID] = null;
 
   firebase.database().ref().update(updates);
 }
 
-function updateInventoryItem(inventoryItemUid, key, value, updates = {}) {
-  updates["inventory/" + inventoryItemUid + "/" + key] = value;
+function updateInventoryItem(inventoryItemID, key, value, updates = {}) {
+  updates["inventory/" + inventoryItemID + "/" + key] = value;
 
   firebase.database().ref().update(updates);
 }

@@ -17,6 +17,7 @@ import NotFound from "../pages/NotFound/NotFound";
 // import History from "./History";
 
 import "../style/App.css";
+import InventoryInstances from "../pages/Administrators/InventoryInstances";
 
 const { Header, Content } = Layout;
 
@@ -38,22 +39,27 @@ export default class Routes extends PureComponent {
   render() {
     return (
       <Switch>
-         <Route exact path="/" component={this.authComponent} />
-         <Route exact path="/retrieve_credentials" component={ForgotPage} />
-         {/* <Route path="/signup" component={SignUpPage} exact />  */}
-         <Layout>
-            <Switch>
-               <Route exact path="/login" component={LoginPage} />
-               <Route exact path='/orders' component={Orders}/>
-               <Route exact path='/reservations/checkin' component={Checkin}/>
-               <Route exact path='/reservations/checkout' component={Checkout}/>
-               <Route exact path='/inventory' component={Inventory}/>
-               <Route exact path='/employees' component={Employees}/>
-               {/* <Route path='/home' component={EmployeeHome}/> */}
-               <Route exact path='/home' component={AdminHome}/>
-               <Route component={NotFound} />
-            </Switch>
-         </Layout>
+        <Route exact path="/" component={this.authComponent} />
+        <Route exact path="/retrieve_credentials" component={ForgotPage} />
+        {/* <Route path="/signup" component={SignUpPage} exact />  */}
+        <Layout>
+          <Switch>
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/orders" component={Orders} />
+            <Route exact path="/reservations/checkin" component={Checkin} />
+            <Route exact path="/reservations/checkout" component={Checkout} />
+            <Route exact path="/inventory" component={Inventory} />
+            <Route
+              exact
+              path="/inventory/:itemID"
+              component={InventoryInstances}
+            />
+            <Route exact path="/employees" component={Employees} />
+            {/* <Route path='/home' component={EmployeeHome}/> */}
+            <Route exact path="/home" component={AdminHome} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
       </Switch>
     );
   }
