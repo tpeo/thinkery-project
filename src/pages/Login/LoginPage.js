@@ -1,10 +1,10 @@
 import React from "react";
 
 import Logo from "./../../img/logo.png";
-import AdminLoginForm from "../../components/Login/AdminLoginForm";
-import EmployeeLoginForm from "../../components/Login/EmployeeLoginForm";
-import LoginNavigationBar from "./../../navigation/LoginNavigationBar"
-import { Row, Col, Container } from 'react-bootstrap';
+import AdminLoginForm from "../../components/LoginForms/AdminLoginForm";
+import EmployeeLoginForm from "../../components/LoginForms/EmployeeLoginForm";
+import LoginNavigationBar from "./../../navigation/LoginNavigationBar";
+import { Row, Col, Container } from "react-bootstrap";
 
 import "./Login.css";
 
@@ -17,15 +17,11 @@ function LoginPage() {
       </div>
       <Row>
         <Col className="LoginForm">
-          <p>
-            Employee Sign In
-          </p>
+          <p>Employee Sign In</p>
           <EmployeeLoginForm />
         </Col>
         <Col className="LoginForm">
-          <p>
-            Administrator Sign In
-          </p>
+          <p>Administrator Sign In</p>
           <AdminLoginForm />
         </Col>
       </Row>

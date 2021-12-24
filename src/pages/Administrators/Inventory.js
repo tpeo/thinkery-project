@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InventoryTable from "./../../components/Inventory/InventoryTable";
+import InventoryTable from "./../../components/Tables/InventoryTable";
 import "../TablePage.css";
 
 function Inventory() {

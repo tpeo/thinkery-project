@@ -1,5 +1,5 @@
 import React from "react";
-import "../../TablePage.css";
+import "../TablePage.css";
 
 function Checkin() {
   return (

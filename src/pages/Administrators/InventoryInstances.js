@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import InventoryInstancesTable from "../../components/Inventory/InventoryInstancesTable";
+import InventoryInstancesTable from "../../components/Tables/InventoryInstancesTable";
 import "../TablePage.css";
 
 function InventoryInstances() {
