@@ -1,16 +1,6 @@
 import React, { PureComponent } from "react";
-import History from "../../navigation/History";
-import {
-  /* Login Form */
-  Form,
-  Input,
-  Button,
-} from "antd";
-
-import AuthService from "../../services/AuthService";
-import Logo from "./../../img/logo.png";
+import { Form, Input, Button } from "antd";
 import "../../pages/Login/Login.css";
-import { resolveOnChange } from "antd/lib/input/Input";
 
 export default class EmployeeLoginForm extends PureComponent {
   constructor(props) {
