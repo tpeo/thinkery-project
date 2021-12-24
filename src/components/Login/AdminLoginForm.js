@@ -14,7 +14,7 @@ export default class AdminLoginForm extends PureComponent {
 
   render() {
     return (
-      <>
+      <div>
         <Form name="basic" layout="vertical" initialValues={{ remember: true }}>
           <Form.Item
             label="Email"
@@ -47,12 +47,13 @@ export default class AdminLoginForm extends PureComponent {
               type="primary"
               size="large"
               htmlType="submit"
+              href="/home"
             >
               Sign In
             </Button>
           </Form.Item>
         </Form>
-      </>
+      </div>
     );
   }
 }
