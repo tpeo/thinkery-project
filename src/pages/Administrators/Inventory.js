@@ -29,10 +29,40 @@ function Inventory() {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-            Large Modal
+            Add a new inventory item!
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>...</Modal.Body>
+        <Modal.Body>
+          <Form
+            name="basic"
+            layout="vertical"
+            initialValues={{ remember: true }}
+          >
+            <Form.Item label="Name" name="itemName">
+              <Input className="Form" placeholder="Crayon Packs" />
+            </Form.Item>
+            <Form.Item label="Description" name="description">
+              <Input className="Form" placeholder="Pack of 24 crayons" />
+            </Form.Item>
+            <Form.Item label="Brand" name="brand">
+              <Input className="Form" placeholder="Crayola" />
+            </Form.Item>
+            <Form.Item label="Quantity" name="quantity">
+              <Input className="Form" placeholder="30" />
+            </Form.Item>
+            <Form.Item className="SubmitFormButton">
+              <Button
+                className="LoginButton"
+                type="primary"
+                size="large"
+                htmlType="submit"
+                onClick={() => setModal(false)}
+              >
+                Add
+              </Button>
+            </Form.Item>
+          </Form>
+        </Modal.Body>
       </Modal>
     </div>
   );
