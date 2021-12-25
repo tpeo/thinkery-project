@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Input, Table, Row, Col, Space, Button } from "antd";
 import "./../../pages/TablePage.css";
-import writeEndpoints from "../../writeEndpoints";
 import { useSelector } from "react-redux";
 
 function OrderRequestsTable({}) {

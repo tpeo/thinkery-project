@@ -3,9 +3,32 @@ import { Modal } from "react-bootstrap";
 import InventoryTable from "./../../components/Tables/InventoryTable";
 import { Form, Input, Button } from "antd";
 import "../TablePage.css";
+import firebaseCalls from "../../firebaseCalls";
+import NewItemModalWrapper from "../../components/NewItemModalWrapper";
 
 function Inventory() {
-  const [modal, setModal] = useState(false);
+  const [addItemModal, setAddItemModal] = useState(false);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+
+  const submitAddItem = () => {
+    setAddItemModal(false);
+
+    firebaseCalls.addInventoryItem({
+      itemID: "MA1692",
+      name,
+      brand,
+      description,
+      quantity: 0,
+      lastReorderDate: "12/25/2021",
+    });
+
+    setName("");
+    setBrand("");
+    setDescription("");
+  };
+
   return (
     <div>
       <div className="fullHeader">
@@ -15,55 +38,44 @@ function Inventory() {
           type="primary"
           size="large"
           htmlType="submit"
-          onClick={() => setModal(true)}
+          onClick={() => setAddItemModal(true)}
         >
           New Item
         </Button>
       </div>
       <InventoryTable />
-      <Modal
-        size="lg"
-        show={modal}
-        onHide={() => setModal(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
+      <NewItemModalWrapper
+        title="New Inventory Item"
+        showModal={addItemModal}
+        onHide={() => setAddItemModal(false)}
+        onSubmit={submitAddItem}
+        submitText="Add Item"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
-            Add a new inventory item!
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form
-            name="basic"
-            layout="vertical"
-            initialValues={{ remember: true }}
-          >
-            <Form.Item label="Name" name="itemName">
-              <Input className="Form" placeholder="Crayon Packs" />
-            </Form.Item>
-            <Form.Item label="Description" name="description">
-              <Input className="Form" placeholder="Pack of 24 crayons" />
-            </Form.Item>
-            <Form.Item label="Brand" name="brand">
-              <Input className="Form" placeholder="Crayola" />
-            </Form.Item>
-            <Form.Item label="Quantity" name="quantity">
-              <Input className="Form" placeholder="30" />
-            </Form.Item>
-            <Form.Item className="SubmitFormButton">
-              <Button
-                className="LoginButton"
-                type="primary"
-                size="large"
-                htmlType="submit"
-                onClick={() => setModal(false)}
-              >
-                Add
-              </Button>
-            </Form.Item>
-          </Form>
-        </Modal.Body>
-      </Modal>
+        <Form.Item label="Name" name="itemName">
+          <Input
+            value={name}
+            className="Form"
+            placeholder="Crayon Packs"
+            onChange={(event) => setName(event.target.value)}
+          />
+        </Form.Item>
+        <Form.Item label="Description" name="description">
+          <Input
+            value={description}
+            className="Form"
+            placeholder="Pack of 24 crayons"
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </Form.Item>
+        <Form.Item label="Brand" name="brand">
+          <Input
+            value={brand}
+            className="Form"
+            placeholder="Crayola"
+            onChange={(event) => setBrand(event.target.value)}
+          />
+        </Form.Item>
+      </NewItemModalWrapper>
     </div>
   );
 }

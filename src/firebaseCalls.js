@@ -23,9 +23,7 @@ function updateOrderRequest(orderRequestUid, key, value, updates = {}) {
 /******************************************/
 
 function addEmployee(employeeObj, updates = {}) {
-  const employeeUid = firebase.database().ref("employees/").push().key;
-  employeeObj.employeeID = employeeUid;
-  updates["employees/" + employeeUid] = employeeObj;
+  updates["employees/" + employeeObj.employeeID] = employeeObj;
 
   firebase.database().ref().update(updates);
 }
