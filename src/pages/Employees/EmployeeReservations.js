@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import React from "react";
 import InventoryTable from "./../../components/Tables/InventoryTable";
-import { Form, Input, Button } from "antd";
+import { Button } from "antd";
 import "../TablePage.css";
-import firebaseCalls from "../../firebaseCalls";
-import NewItemModalWrapper from "../../components/NewItemModalWrapper";
 
 function EmployeeReservations() {
   return (
@@ -32,7 +29,7 @@ function EmployeeReservations() {
           </Button>
         </div>
       </div>
-      <InventoryTable />
+      <InventoryTable fromEmployee />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Input, Table, Row, Col, Space, Button } from "antd";
 import "./../../pages/TablePage.css";
 import { useSelector } from "react-redux";
 
-function InventoryTable({}) {
+function InventoryTable({ fromEmployee = false }) {
   const history = useHistory();
   const columns = [
     {
@@ -66,7 +66,9 @@ function InventoryTable({}) {
       onRow={(record, rowIndex) => {
         return {
           onClick: () => {
-            history.push("/inventory/" + record.itemID);
+            history.push(
+              (fromEmployee ? "/reservations/" : "/inventory/") + record.itemID
+            );
             document.body.style.cursor = "default";
           },
           onMouseEnter: () => {

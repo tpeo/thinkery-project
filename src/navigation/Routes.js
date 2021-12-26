@@ -63,11 +63,11 @@ export default function Routes() {
               />
               <Route exact path="/reservations/checkin" component={Checkin} />
               <Route exact path="/reservations/checkout" component={Checkout} />
-              {/* <Route
+              <Route
                 exact
                 path="/reservations/:itemID"
                 component={InventoryInstances}
-              /> */}
+              />
             </>
           )}
           <Route component={NotFound} />

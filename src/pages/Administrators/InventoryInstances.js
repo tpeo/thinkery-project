@@ -6,7 +6,11 @@ import "../TablePage.css";
 
 function InventoryInstances() {
   const { itemID } = useParams();
+
   const inventoryItem = useSelector((state) => state.inventory[itemID]);
+
+  // Special cases - shouldn't show inventory instance data
+  if (itemID == "checkin" || itemID == "checkout") return null;
 
   return (
     <div>
