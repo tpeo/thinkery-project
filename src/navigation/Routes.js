@@ -5,9 +5,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import LoginPage from "../pages/Login/LoginPage";
 import ForgotPage from "../pages/Login/ForgotPage";
 import EmployeeHome from "../pages/Employees/EmployeeHome";
-import Orders from "../pages/Orders";
-import Checkin from "../pages/Employees/Checkin";
-import Checkout from "../pages/Employees/Checkout";
+import AdminOrders from "../pages/Administrators/AdminOrders";
+import Checkin from "../pages/Employees/CheckIn";
+import Checkout from "../pages/Employees/CheckOut";
 import Inventory from "../pages/Administrators/Inventory";
 import Employees from "../pages/Administrators/Employees";
 import AdminHome from "../pages/Administrators/AdminHome";
@@ -19,6 +19,9 @@ import NotFound from "../pages/NotFound/NotFound";
 import "../style/App.css";
 import InventoryInstances from "../pages/Administrators/InventoryInstances";
 import { useSelector } from "react-redux";
+import EmployeeReservations from "../pages/Employees/EmployeeReservations";
+import AdminReservations from "../pages/Administrators/AdminReservations";
+import EmployeeOrders from "../pages/Employees/EmployeeOrders";
 
 export default function Routes() {
   const user = useSelector((state) => state.user);
@@ -40,28 +43,37 @@ export default function Routes() {
       <Route exact path="/retrieve_credentials" component={ForgotPage} />
       <Layout>
         <Switch>
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/orders" component={Orders} />
-          {!isAdmin && (
-            <Route exact path="/reservations/checkin" component={Checkin} />
+          {isAdmin ? (
+            <>
+              <Route exact path="/home" component={AdminHome} />
+              <Route exact path="/orders" component={AdminOrders} />
+              <Route exact path="/inventory" component={Inventory} />
+              <Route
+                exact
+                path="/inventory/:itemID"
+                component={InventoryInstances}
+              />
+              <Route exact path="/employees" component={Employees} />
+              <Route exact path="/reservations" component={AdminReservations} />
+            </>
+          ) : (
+            <>
+              <Route exact path="/home" component={EmployeeHome} />
+              <Route exact path="/orders" component={EmployeeOrders} />
+              <Route
+                exact
+                path="/reservations"
+                component={EmployeeReservations}
+              />
+              <Route exact path="/reservations/checkin" component={Checkin} />
+              <Route exact path="/reservations/checkout" component={Checkout} />
+              {/* <Route
+                exact
+                path="/reservations/:itemID"
+                component={InventoryInstances}
+              /> */}
+            </>
           )}
-          {!isAdmin && (
-            <Route exact path="/reservations/checkout" component={Checkout} />
-          )}
-          {isAdmin && <Route exact path="/inventory" component={Inventory} />}
-          {isAdmin && (
-            <Route
-              exact
-              path="/inventory/:itemID"
-              component={InventoryInstances}
-            />
-          )}
-          {isAdmin && <Route exact path="/employees" component={Employees} />}
-          <Route
-            exact
-            path="/home"
-            component={isAdmin ? AdminHome : EmployeeHome}
-          />
           <Route component={NotFound} />
         </Switch>
       </Layout>

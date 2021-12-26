@@ -33,3 +33,7 @@
   border-color: transparent;
   border-radius: 5px;
 }
+
+.leftPadding {
+  margin-left: 20px;
+}
