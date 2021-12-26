@@ -29,7 +29,7 @@ export default class EmployeeLoginForm extends PureComponent {
               type="primary"
               size="large"
               htmlType="submit"
-              href="/home"
+              href="/orders"
             >
               Sign In
             </Button>

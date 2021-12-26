@@ -47,7 +47,7 @@ export default class AdminLoginForm extends PureComponent {
               type="primary"
               size="large"
               htmlType="submit"
-              href="/home"
+              href="/orders"
             >
               Sign In
             </Button>

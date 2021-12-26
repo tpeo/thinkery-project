@@ -4,13 +4,11 @@ import { Route, Switch, Redirect } from "react-router-dom";
 // import pages
 import LoginPage from "../pages/Login/LoginPage";
 import ForgotPage from "../pages/Login/ForgotPage";
-import EmployeeHome from "../pages/Employees/EmployeeHome";
 import AdminOrders from "../pages/Administrators/AdminOrders";
 import Checkin from "../pages/Employees/CheckIn";
 import Checkout from "../pages/Employees/CheckOut";
 import Inventory from "../pages/Administrators/Inventory";
 import Employees from "../pages/Administrators/Employees";
-import AdminHome from "../pages/Administrators/AdminHome";
 import Layout from "./../pages/Layout";
 import NotFound from "../pages/NotFound/NotFound";
 
@@ -31,7 +29,7 @@ export default function Routes() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     // TODO: fix this and set local storage item when logging in
     return isLoggedIn != null && isLoggedIn ? (
-      <Redirect to="/home" />
+      <Redirect to="/orders" />
     ) : (
       <LoginPage />
     );
@@ -45,7 +43,6 @@ export default function Routes() {
         <Switch>
           {isAdmin ? (
             <>
-              <Route exact path="/home" component={AdminHome} />
               <Route exact path="/orders" component={AdminOrders} />
               <Route exact path="/inventory" component={Inventory} />
               <Route
@@ -58,7 +55,6 @@ export default function Routes() {
             </>
           ) : (
             <>
-              <Route exact path="/home" component={EmployeeHome} />
               <Route exact path="/orders" component={EmployeeOrders} />
               <Route
                 exact

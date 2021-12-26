@@ -15,7 +15,7 @@ function EmployeeNavigationBar() {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="navbrand" href="/home">
+        <Navbar.Brand className="navbrand">
           <img src={logo} width="50" height="50" /> thinkventory
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

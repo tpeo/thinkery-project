@@ -14,7 +14,7 @@ const AdminNavigationBar = () => {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="navbrand" href="/home">
+        <Navbar.Brand className="navbrand">
           <img src={logo} width="50" height="50" />
           {"  "}
           thinkventory
