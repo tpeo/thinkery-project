@@ -24,14 +24,7 @@ const AdminNavigationBar = () => {
           <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
             <Nav.Link href="/inventory">Inventory</Nav.Link>
             <Nav.Link href="/orders">Orders</Nav.Link>
-            <NavDropdown title="Reservations" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/reservations/checkout">
-                Check Out
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/reservations/checkin">
-                Check In
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/reservations">Reservations</Nav.Link>
             <Nav.Link href="/employees">Employees</Nav.Link>
           </Nav>
         </Navbar.Collapse>

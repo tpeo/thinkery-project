@@ -6,8 +6,8 @@ import LoginPage from "../pages/Login/LoginPage";
 import ForgotPage from "../pages/Login/ForgotPage";
 import EmployeeHome from "../pages/Employees/EmployeeHome";
 import Orders from "../pages/Orders";
-import Checkin from "../pages/Reservations/Checkin";
-import Checkout from "../pages/Reservations/Checkout";
+import Checkin from "../pages/Employees/Checkin";
+import Checkout from "../pages/Employees/Checkout";
 import Inventory from "../pages/Administrators/Inventory";
 import Employees from "../pages/Administrators/Employees";
 import AdminHome from "../pages/Administrators/AdminHome";
@@ -18,49 +18,53 @@ import NotFound from "../pages/NotFound/NotFound";
 
 import "../style/App.css";
 import InventoryInstances from "../pages/Administrators/InventoryInstances";
+import { useSelector } from "react-redux";
 
-const { Header, Content } = Layout;
+export default function Routes() {
+  const user = useSelector((state) => state.user);
+  const isAdmin = user.type == 1;
 
-export default class Routes extends PureComponent {
-  constructor() {
-    super();
-  }
-
-  authComponent = () => {
+  const authComponent = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
-    console.log("isLoggedIn", isLoggedIn);
+    // TODO: fix this and set local storage item when logging in
     return isLoggedIn != null && isLoggedIn ? (
       <Redirect to="/home" />
     ) : (
-      <LoginPage></LoginPage>
+      <LoginPage />
     );
   };
 
-  render() {
-    return (
-      <Switch>
-        <Route exact path="/" component={this.authComponent} />
-        <Route exact path="/retrieve_credentials" component={ForgotPage} />
-        {/* <Route path="/signup" component={SignUpPage} exact />  */}
-        <Layout>
-          <Switch>
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/orders" component={Orders} />
+  return (
+    <Switch>
+      <Route exact path="/" component={authComponent} />
+      <Route exact path="/retrieve_credentials" component={ForgotPage} />
+      <Layout>
+        <Switch>
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/orders" component={Orders} />
+          {!isAdmin && (
             <Route exact path="/reservations/checkin" component={Checkin} />
+          )}
+          {!isAdmin && (
             <Route exact path="/reservations/checkout" component={Checkout} />
-            <Route exact path="/inventory" component={Inventory} />
+          )}
+          {isAdmin && <Route exact path="/inventory" component={Inventory} />}
+          {isAdmin && (
             <Route
               exact
               path="/inventory/:itemID"
               component={InventoryInstances}
             />
-            <Route exact path="/employees" component={Employees} />
-            {/* <Route path='/home' component={EmployeeHome}/> */}
-            <Route exact path="/home" component={AdminHome} />
-            <Route component={NotFound} />
-          </Switch>
-        </Layout>
-      </Switch>
-    );
-  }
+          )}
+          {isAdmin && <Route exact path="/employees" component={Employees} />}
+          <Route
+            exact
+            path="/home"
+            component={isAdmin ? AdminHome : EmployeeHome}
+          />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </Switch>
+  );
 }
