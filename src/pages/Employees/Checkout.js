@@ -52,7 +52,13 @@ function Checkout() {
           <Select
             placeholder="EM1210 - Jonathan Wong (jonathanwong@yahoo.com)"
             onChange={setEmployee}
-            style={{ textAlign: "left" }}
+            bordered={false}
+            style={{
+              textAlign: "left",
+              borderColor: "#b12f23",
+              borderStyle: "solid",
+              borderWidth: 1,
+            }}
           >
             {Object.values(employees).map((emp, ind) => (
               <Select.Option key={`${ind}`} value={emp.employeeID}>
