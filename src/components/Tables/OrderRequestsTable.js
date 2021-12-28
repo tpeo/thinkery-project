@@ -5,7 +5,6 @@ import "./../../pages/TablePage.css";
 import { useSelector } from "react-redux";
 
 function OrderRequestsTable({}) {
-  const history = useHistory();
   const columns = [
     {
       title: "Request ID",
@@ -21,6 +20,18 @@ function OrderRequestsTable({}) {
       title: "Priority",
       dataIndex: "priority",
       key: "priority",
+      filters: [
+        {
+          text: "Priority",
+          value: "Priority",
+        },
+        {
+          text: "Non-Priority",
+          value: "Non-Priority",
+        },
+      ],
+      onFilter: (value, orderReq) => orderReq.priority == value,
+      filterSearch: true,
     },
     {
       title: "Employee Name",
@@ -46,6 +57,26 @@ function OrderRequestsTable({}) {
       title: "Status",
       dataIndex: "status",
       key: "status",
+      filters: [
+        {
+          text: "Unprocessed",
+          value: "Unprocessed",
+        },
+        {
+          text: "Ordered",
+          value: "Ordered",
+        },
+        {
+          text: "Completed",
+          value: "Completed",
+        },
+        {
+          text: "Cancelled",
+          value: "Cancelled",
+        },
+      ],
+      onFilter: (value, orderReq) => orderReq.status == value,
+      filterSearch: true,
     },
   ];
 
