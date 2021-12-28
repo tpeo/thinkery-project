@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
 import InventoryTable from "./../../components/Tables/InventoryTable";
 import { Form, Input, Button } from "antd";
 import "../TablePage.css";

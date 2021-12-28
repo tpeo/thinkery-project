@@ -4,7 +4,7 @@ const EMPLOYEE = 2;
 const defaultState = {
   user: {
     employeeID: "",
-    type: ADMINISTRATOR, // TODO: Change this later accordingly
+    type: EMPLOYEE, // TODO: Change this later accordingly
   },
   orderRequests: {},
   employees: {},
