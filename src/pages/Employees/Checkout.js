@@ -8,6 +8,7 @@ function Checkout() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [program, setProgram] = useState("");
   const [employee, setEmployee] = useState("");
 
   const employees = useSelector((state) => state.employees || {});
@@ -46,6 +47,14 @@ function Checkout() {
             className="Form"
             placeholder="12/30/2021"
             onChange={(event) => setEndDate(event.target.value)}
+          />
+        </Form.Item>
+        <Form.Item label="Program" name="program">
+          <Input
+            value={program}
+            className="Form"
+            placeholder="Program"
+            onChange={(event) => setProgram(event.target.value)}
           />
         </Form.Item>
         <Form.Item label="Employee" name="employee">
