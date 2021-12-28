@@ -1,49 +1,57 @@
 @import "~antd/dist/antd.css";
 
 .App {
-    text-align: center;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar-nav {
-   -webkit-flex-direction: row;
-   -ms-flex-direction: row;
-   flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .color-nav {
-   background-color: #B12F23;
-   font-weight: 600;
-   font-size: 16px;
-   font-family: 'Open Sans', sans-serif;
+  background-color: #b12f23;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbrand {
-   font-size: 22px;
-   font-weight: 800;
-   font-family: 'Open Sans', sans-serif;
- }
+  font-size: 22px;
+  font-weight: 800;
+  font-family: "Open Sans", sans-serif;
+}
+
+.navBarText {
+  font-size: 16px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-right: 20px;
+  line-height: 20px;
+}
 
 .site-layout-content {
-   min-height: 280px;
-   padding: 24px;
-   background: #fff;
-   font-weight: 600;
-   font-family: 'Open Sans', sans-serif;
- }
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+}
 
 .logo {
-    height: 20px;
-    padding-left: 10px;
+  height: 20px;
+  padding-left: 10px;
 }
 
 .content {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
-.ant-layout{
-    background: #ffffff;
+.ant-layout {
+  background: #ffffff;
 }

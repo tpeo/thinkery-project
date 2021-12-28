@@ -25,6 +25,10 @@ function EmployeeNavigationBar() {
             <Nav.Link href="/reservations">Reservations</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <text className="navBarText">Employee</text>
+        <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
+          <Nav.Link href="/orders">Mehul Daruka</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

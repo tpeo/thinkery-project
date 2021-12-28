@@ -28,6 +28,10 @@ const AdminNavigationBar = () => {
             <Nav.Link href="/employees">Employees</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <text className="navBarText">Administrator</text>
+        <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
+          <Nav.Link href="/orders">Mehul Daruka</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );
