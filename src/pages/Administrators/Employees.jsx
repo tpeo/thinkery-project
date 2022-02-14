@@ -3,7 +3,7 @@ import EmployeesTable from "../../components/EmployeesTable/EmployeesTable";
 import { Form, Input, Button } from "antd";
 import "../TablePage.css";
 import NewItemModalWrapper from "../../components/NewItemModalWrapper/NewItemModalWrapper";
-import firebaseCalls from "../../firebase/firebaseCalls";
+import firebaseCalls from "../../utils/firebaseCalls";
 
 function getRandomNumberBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);

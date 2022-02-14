@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import firebase from "./firebase/firebase";
+import firebase from "./utils/firebase";
 import "./style/App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./navigation/Routes";

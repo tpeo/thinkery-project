@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InventoryTable from "./../../components/InventoryTable/InventoryTable";
 import { Form, Input, Button } from "antd";
 import "../TablePage.css";
-import firebaseCalls from "../../firebase/firebaseCalls";
+import firebaseCalls from "../../utils/firebaseCalls";
 import NewItemModalWrapper from "../../components/NewItemModalWrapper/NewItemModalWrapper";
 
 function Inventory() {
