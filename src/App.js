@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import firebase from "./firebase";
-import logo from "./logo.svg";
+import firebase from "./firebase/firebase";
 import "./style/App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./navigation/Routes";
 import History from "./navigation/History";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   addEmployee,
   addInventoryInstanceItem,
@@ -17,7 +16,7 @@ import {
   removeInventoryItem,
   removeOrderRequest,
   removeReservation,
-} from "./actions";
+} from "./redux/actions";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const onChildAddedOrChanged = (path, callback) => {

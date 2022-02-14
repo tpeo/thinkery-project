@@ -1,0 +1,39 @@
+.ant-table-thead > tr > th {
+  color: white;
+  background: #b12f23 !important;
+}
+
+.fullHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header {
+  text-align: left;
+  color: #b12f23;
+  font-weight: 700;
+  font-size: 48px;
+  margin-bottom: 2%;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ant-table table {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.addButton {
+  text-align: center;
+  background: #b12f23;
+  color: white;
+  font-weight: 600;
+  border-color: transparent;
+  border-radius: 5px;
+}
+
+.leftPadding {
+  margin-left: 20px;
+}
