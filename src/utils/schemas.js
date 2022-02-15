@@ -32,19 +32,17 @@ export const inventoryItem = {
 export const instanceItem = {
   itemID: "", // ID of corresponding item
   instanceID: "",
-  name: "", // not sure if needed since contained in inventoryItem
-  brand: "", // not sure if needed since contained in inventoryItem
   reservationID: "", // only if reserved, use this to get rest of the data
-  description: "",
 };
 
 export const reservationItem = {
   reservationID: "",
-  itemInstanceID: "", // use this to get item instance data
+  itemInstanceID: "", // use this to get item data
   reservationStatus: 0, // default to "in-progress"
   currentEmployee: "",
   employeeEmail: "",
   program: "",
-  reservationStartDate: "", // current date
+  reservationStartDate: "",
   reservationEndDate: "",
+  description: "",
 };

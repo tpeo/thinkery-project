@@ -7,7 +7,7 @@ function Checkout() {
   const [itemInstanceID, setItemInstanceID] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [instances, setInstances] = useState([]);
   const [program, setProgram] = useState("");
   const [employee, setEmployee] = useState("");
 
@@ -25,13 +25,28 @@ function Checkout() {
             onChange={(event) => setItemInstanceID(event.target.value)}
           />
         </Form.Item>
-        <Form.Item label="Quantity" name="quantity">
-          <Input
-            value={quantity}
-            className="Form"
-            placeholder="48"
-            onChange={(event) => setQuantity(event.target.value)}
-          />
+        <Form.Item label="Item Instances" name="itemInstances">
+          <Select
+            placeholder="Select instance IDs"
+            mode="multiple"
+            onChange={setInstances}
+            bordered={false}
+            style={{
+              textAlign: "left",
+              borderColor: "#b12f23",
+              borderStyle: "solid",
+              borderWidth: 1,
+            }}
+          >
+            {[
+              <Select.Option key={`a1`} value={"a1"}>
+                a1
+              </Select.Option>,
+              <Select.Option key={`a2`} value={"a2"}>
+                a2
+              </Select.Option>,
+            ]}
+          </Select>
         </Form.Item>
         <Form.Item label="Start Date" name="startDate">
           <Input
