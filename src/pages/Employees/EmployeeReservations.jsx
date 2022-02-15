@@ -13,7 +13,7 @@ function EmployeeReservations() {
             type="primary"
             size="large"
             htmlType="submit"
-            href="/reservations/checkin"
+            href="/emp/reservations/checkin"
           >
             Check In
           </Button>
@@ -22,7 +22,7 @@ function EmployeeReservations() {
             type="primary"
             size="large"
             htmlType="submit"
-            href="/reservations/checkout"
+            href="/emp/reservations/checkout"
           >
             Check Out
           </Button>

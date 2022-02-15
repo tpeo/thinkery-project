@@ -22,15 +22,15 @@ const AdminNavigationBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
-            <Nav.Link href="/inventory">Inventory</Nav.Link>
-            <Nav.Link href="/orders">Orders</Nav.Link>
-            <Nav.Link href="/reservations">Reservations</Nav.Link>
-            <Nav.Link href="/employees">Employees</Nav.Link>
+            <Nav.Link href="/admin/inventory">Inventory</Nav.Link>
+            <Nav.Link href="/admin/orders">Orders</Nav.Link>
+            <Nav.Link href="/admin/reservations">Reservations</Nav.Link>
+            <Nav.Link href="/admin/employees">Employees</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <text className="navBarText">Administrator</text>
         <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
-          <Nav.Link href="/orders">Mehul Daruka</Nav.Link>
+          <Nav.Link href="/admin/orders">Mehul Daruka</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

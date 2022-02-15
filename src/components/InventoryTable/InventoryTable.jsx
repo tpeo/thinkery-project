@@ -67,7 +67,8 @@ function InventoryTable({ fromEmployee = false }) {
         return {
           onClick: () => {
             history.push(
-              (fromEmployee ? "/reservations/" : "/inventory/") + record.itemID
+              (fromEmployee ? "/emp/reservations/" : "/admin/inventory/") +
+                record.itemID
             );
             document.body.style.cursor = "default";
           },

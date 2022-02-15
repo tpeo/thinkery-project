@@ -19,6 +19,9 @@ import {
 } from "./redux/actions";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+global.ADMINISTRATOR = 1;
+global.EMPLOYEE = 2;
+
 const onChildAddedOrChanged = (path, callback) => {
   firebase.database().ref(path).on("child_added", callback);
   firebase.database().ref(path).on("child_changed", callback);

@@ -21,13 +21,13 @@ function EmployeeNavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
-            <Nav.Link href="/orders">Orders</Nav.Link>
-            <Nav.Link href="/reservations">Reservations</Nav.Link>
+            <Nav.Link href="/emp/orders">Orders</Nav.Link>
+            <Nav.Link href="/emp/reservations">Reservations</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <text className="navBarText">Employee</text>
         <Nav className="me-auto" style={{ maxHeight: "100px" }} navbarScroll>
-          <Nav.Link href="/orders">Mehul Daruka</Nav.Link>
+          <Nav.Link href="/emp/orders">Mehul Daruka</Nav.Link>
         </Nav>
       </Container>
     </Navbar>
