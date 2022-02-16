@@ -87,17 +87,13 @@ function updateInventoryItem(inventoryItemID, key, value, updates = {}) {
 /******************************************/
 
 function addInventoryInstanceItem(inventoryInstanceObj, updates = {}) {
-  const inventoryInstanceUid = firebase
-    .database()
-    .ref("inventoryInstances/")
-    .push().key;
-  inventoryInstanceObj.instanceID = inventoryInstanceUid;
-  updates["inventoryInstances/" + inventoryInstanceUid] = inventoryInstanceObj;
+  updates["inventoryInstances/" + inventoryInstanceObj.instanceID] =
+    inventoryInstanceObj;
   updates[
     "inventory/" +
       inventoryInstanceObj.itemID +
       "/instances/" +
-      inventoryInstanceUid
+      inventoryInstanceObj.instanceID
   ] = true;
 
   firebase.database().ref().update(updates);

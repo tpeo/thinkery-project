@@ -3,8 +3,17 @@ import { useHistory } from "react-router-dom";
 import { Input, Table, Row, Col, Space, Button } from "antd";
 import { useSelector } from "react-redux";
 
+const EMPTY_INSTANCE = {
+  instanceID: "N/A",
+  reservationStatus: "N/A",
+  currentEmployee: "N/A",
+  employeeEmail: "N/A",
+  program: "N/A",
+  reservationEndDate: "N/A",
+  description: "N/A",
+};
+
 function InventoryInstancesTable({ inventoryItem }) {
-  const history = useHistory();
   const columns = [
     {
       title: "Instance ID",
@@ -36,34 +45,28 @@ function InventoryInstancesTable({ inventoryItem }) {
       dataIndex: "reservationEndDate",
       key: "reservationEndDate",
     },
+    {
+      title: "Notes/Description",
+      dataIndex: "description",
+      key: "description",
+    },
   ];
 
-  //   writeEndpoints.addInventoryItem({
-  //     name: "Marker Packs",
-  //     quantity: 48,
-  //     description: "Pack of 6 washable colored markers",
-  //     brand: "Crayola",
-  //     lastReorderDate: "11/10/21",
-  //     itemID: "MA1690",
-  //     instances: {},
-  //   });
+  const inventoryInstances = useSelector((state) => state.inventoryInstances);
+  const reservations = useSelector((state) => state.reservations);
 
-  //   writeEndpoints.addInventoryItem({
-  //     name: "Crayon Packs",
-  //     quantity: 20,
-  //     description: "Pack of 24 crayons",
-  //     brand: "Crayola",
-  //     lastReorderDate: "11/20/21",
-  //     itemID: "MA1691",
-  //     instances: {},
-  //   });
+  const itemInstances = Object.keys(inventoryItem?.instances ?? {})
+    .concat(Object.keys(inventoryItem?.reservedInstances ?? {}))
+    .map((instanceID) => {
+      const instanceObj = inventoryInstances?.[instanceID] ?? {};
+      return {
+        ...EMPTY_INSTANCE,
+        ...instanceObj,
+        ...reservations?.[instanceObj.reservationID],
+      };
+    });
 
-  return (
-    <Table
-      dataSource={Object.values(inventoryItem?.instances ?? {})}
-      columns={columns}
-    />
-  );
+  return <Table dataSource={itemInstances} columns={columns} />;
 }
 
 export default InventoryInstancesTable;

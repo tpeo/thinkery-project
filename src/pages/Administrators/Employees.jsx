@@ -4,12 +4,11 @@ import { Form, Input, Button } from "antd";
 import "../TablePage.css";
 import NewItemModalWrapper from "../../components/NewItemModalWrapper/NewItemModalWrapper";
 import firebaseCalls from "../../utils/firebaseCalls";
-
-function getRandomNumberBetween(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import { getThreeDigitNum } from "../../utils/funcs";
+import { useSelector } from "react-redux";
 
 function Employees() {
+  const employees = useSelector((state) => state.employees);
   const [newEmployeeModal, setNewEmployeeModal] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,7 +17,12 @@ function Employees() {
   const submitNewEmployee = () => {
     setNewEmployeeModal(false);
 
-    const employeeID = getRandomNumberBetween(1000, 9999);
+    let employeeID = getThreeDigitNum();
+
+    while (Boolean(employees?.["EM" + employeeID])) {
+      employeeID = getThreeDigitNum();
+    }
+
     firebaseCalls.addEmployee({
       firstName,
       lastName,

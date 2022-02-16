@@ -58,7 +58,7 @@ function AdminReservationsTable() {
 
   const reservations = useSelector((state) => state.reservations);
   const items = useSelector((state) => state.inventory);
-  const instances = useSelector((state) => state.instances);
+  const instances = useSelector((state) => state.inventoryInstances);
 
   const fullReservations = Object.values(reservations ?? {}).map(
     (reservation) => {

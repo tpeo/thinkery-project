@@ -49,7 +49,11 @@ export default function Routes() {
                 component={InventoryInstances}
               />
               <Route exact path="/admin/employees" component={Employees} />
-              <Route exact path="/admin/reservations" component={AdminReservations} />
+              <Route
+                exact
+                path="/admin/reservations"
+                component={AdminReservations}
+              />
             </>
           ) : (
             <>
@@ -59,8 +63,16 @@ export default function Routes() {
                 path="/emp/reservations"
                 component={EmployeeReservations}
               />
-              <Route exact path="/emp/reservations/checkin" component={Checkin} />
-              <Route exact path="/emp/reservations/checkout" component={Checkout} />
+              <Route
+                exact
+                path="/emp/reservations/checkin"
+                component={Checkin}
+              />
+              <Route
+                exact
+                path="/emp/reservations/checkout"
+                component={Checkout}
+              />
               <Route
                 exact
                 path="/emp/reservations/:itemID"

@@ -1,29 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Input, Button, Select } from "antd";
 import "../TablePage.css";
 import { useSelector } from "react-redux";
 
 function Checkout() {
-  const [itemInstanceID, setItemInstanceID] = useState("");
+  const [itemID, setItemID] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [instances, setInstances] = useState([]);
   const [program, setProgram] = useState("");
   const [employee, setEmployee] = useState("");
+  const [description, setDescription] = useState("");
+  const formRef = useRef();
 
   const employees = useSelector((state) => state.employees || {});
+  const inventoryItems = useSelector((state) => state.inventory);
+
+  const checkOutInstances = () => {};
 
   return (
     <div>
       <h1 className="Header">Check-Out</h1>
-      <Form name="basic" layout="vertical" initialValues={{ remember: true }}>
-        <Form.Item label="Item Instance ID" name="itemInstanceID">
-          <Input
-            value={itemInstanceID}
-            className="Form"
-            placeholder="IT1234"
-            onChange={(event) => setItemInstanceID(event.target.value)}
-          />
+      <Form
+        name="basic"
+        layout="vertical"
+        initialValues={{ remember: true }}
+        ref={formRef}
+      >
+        <Form.Item label="Item ID" name="itemID">
+          <Select
+            placeholder="Select item ID"
+            onChange={(val) => {
+              setItemID(val);
+              setInstances([]);
+              formRef.current.setFieldsValue({ itemInstances: [] });
+            }}
+            bordered={false}
+            style={{
+              textAlign: "left",
+              borderColor: "#b12f23",
+              borderStyle: "solid",
+              borderWidth: 1,
+            }}
+          >
+            {Object.keys(inventoryItems || {}).map((itemID) => (
+              <Select.Option key={itemID} value={itemID}>
+                {itemID}
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
         <Form.Item label="Item Instances" name="itemInstances">
           <Select
@@ -38,14 +63,13 @@ function Checkout() {
               borderWidth: 1,
             }}
           >
-            {[
-              <Select.Option key={`a1`} value={"a1"}>
-                a1
-              </Select.Option>,
-              <Select.Option key={`a2`} value={"a2"}>
-                a2
-              </Select.Option>,
-            ]}
+            {Object.keys(inventoryItems?.[itemID]?.instances ?? {}).map(
+              (instanceID) => (
+                <Select.Option key={instanceID} value={instanceID}>
+                  {instanceID}
+                </Select.Option>
+              )
+            )}
           </Select>
         </Form.Item>
         <Form.Item label="Start Date" name="startDate">
@@ -91,13 +115,21 @@ function Checkout() {
             ))}
           </Select>
         </Form.Item>
+        <Form.Item label="Description" name="description">
+          <Input
+            value={description}
+            className="Form"
+            placeholder="Description"
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </Form.Item>
         <Form.Item className="SubmitFormButton">
           <Button
             className="LoginButton"
             type="primary"
             size="large"
             htmlType="submit"
-            onClick={() => {}}
+            onClick={checkOutInstances}
           >
             Submit
           </Button>

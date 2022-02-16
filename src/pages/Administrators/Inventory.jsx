@@ -4,8 +4,12 @@ import { Form, Input, Button } from "antd";
 import "../TablePage.css";
 import firebaseCalls from "../../utils/firebaseCalls";
 import NewItemModalWrapper from "../../components/NewItemModalWrapper/NewItemModalWrapper";
+import { useSelector } from "react-redux";
+import { getFourDigitNum } from "../../utils/funcs";
 
 function Inventory() {
+  const inventoryItems = useSelector((state) => state.inventory);
+
   const [addItemModal, setAddItemModal] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -14,13 +18,18 @@ function Inventory() {
   const submitAddItem = () => {
     setAddItemModal(false);
 
+    let itemID = getFourDigitNum();
+
+    while (Boolean(inventoryItems?.["IT" + itemID])) {
+      itemID = getFourDigitNum();
+    }
+
     firebaseCalls.addInventoryItem({
-      itemID: "MA1692",
+      itemID: "IT" + itemID,
       name,
       brand,
       description,
-      quantity: 0,
-      lastReorderDate: "12/25/2021",
+      lastReorderDate: "N/A",
     });
 
     setName("");

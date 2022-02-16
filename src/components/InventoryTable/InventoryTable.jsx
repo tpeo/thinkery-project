@@ -41,7 +41,6 @@ function InventoryTable({ fromEmployee = false }) {
 
   //   writeEndpoints.addInventoryItem({
   //     name: "Marker Packs",
-  //     quantity: 48,
   //     description: "Pack of 6 washable colored markers",
   //     brand: "Crayola",
   //     lastReorderDate: "11/10/21",
@@ -51,7 +50,6 @@ function InventoryTable({ fromEmployee = false }) {
 
   //   writeEndpoints.addInventoryItem({
   //     name: "Crayon Packs",
-  //     quantity: 20,
   //     description: "Pack of 24 crayons",
   //     brand: "Crayola",
   //     lastReorderDate: "11/20/21",
@@ -60,6 +58,14 @@ function InventoryTable({ fromEmployee = false }) {
   //   });
 
   const inventoryData = useSelector((state) => state.inventory);
+  const allInventory = Object.values(inventoryData || {}).map((item) => {
+    return {
+      ...item,
+      quantity:
+        Object.keys(item?.instances ?? {}).length +
+        Object.keys(item?.reservedInstances ?? {}).length,
+    };
+  });
 
   return (
     <Table
@@ -80,7 +86,7 @@ function InventoryTable({ fromEmployee = false }) {
           },
         };
       }}
-      dataSource={Object.values(inventoryData)}
+      dataSource={allInventory}
       columns={columns}
     />
   );

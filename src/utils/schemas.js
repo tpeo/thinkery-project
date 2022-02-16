@@ -24,21 +24,22 @@ export const inventoryItem = {
   name: "",
   brand: "",
   description: "",
-  quantity: "",
   lastReorderDate: "",
-  instances: {}, // instanceID to true - want in form of object rather than list
+  instances: {}, // available instances, maps instanceID to true
+  reservedInstances: {}, // reserved instances, maps instanceID to true
 };
 
 export const instanceItem = {
   itemID: "", // ID of corresponding item
   instanceID: "",
   reservationID: "", // only if reserved, use this to get rest of the data
+  description: "",
 };
 
 export const reservationItem = {
   reservationID: "",
   itemInstanceID: "", // use this to get item data
-  reservationStatus: 0, // default to "in-progress"
+  reservationStatus: 0, // 0 - AVAILABLE, 1 - RESERVED, 2 - OVERDUE/MISSING
   currentEmployee: "",
   employeeEmail: "",
   program: "",
