@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Form, Input, Button, Select } from "antd";
 import "../TablePage.css";
 import { useSelector } from "react-redux";
+import firebaseCalls from "../../utils/firebaseCalls";
 
 function Checkout() {
   const [itemID, setItemID] = useState("");
@@ -16,7 +17,28 @@ function Checkout() {
   const employees = useSelector((state) => state.employees || {});
   const inventoryItems = useSelector((state) => state.inventory);
 
-  const checkOutInstances = () => {};
+  const checkOutInstances = () => {
+    const currentEmployee = JSON.parse(employee);
+    instances.forEach((instanceID) => {
+      firebaseCalls.addReservation(
+        {
+          reservationID: `RS${instanceID.substring(2)}-${startDate.replace(
+            /\//g,
+            ""
+          )}`,
+          itemInstanceID: instanceID,
+          reservationStatus: 1,
+          currentEmployee: currentEmployee.employeeID,
+          employeeEmail: currentEmployee.email,
+          program,
+          reservationStartDate: startDate,
+          reservationEndDate: endDate,
+          description: description,
+        },
+        itemID
+      );
+    });
+  };
 
   return (
     <div>
@@ -109,7 +131,7 @@ function Checkout() {
             }}
           >
             {Object.values(employees).map((emp, ind) => (
-              <Select.Option key={`${ind}`} value={emp.employeeID}>
+              <Select.Option key={`${ind}`} value={JSON.stringify(emp)}>
                 {emp.employeeID} - {emp.firstName} {emp.lastName} ({emp.email})
               </Select.Option>
             ))}
@@ -129,6 +151,7 @@ function Checkout() {
             type="primary"
             size="large"
             htmlType="submit"
+            disabled={!itemID || instances.length <= 0}
             onClick={checkOutInstances}
           >
             Submit

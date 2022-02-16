@@ -42,10 +42,14 @@ function updateEmployee(employeeUid, key, value, updates = {}) {
 
 /******************************************/
 
-function addReservation(reservationObj, updates = {}) {
-  const reservationUid = firebase.database().ref("reservations/").push().key;
-  reservationObj.reservationID = reservationUid;
-  updates["reservations/" + reservationUid] = reservationObj;
+function addReservation(reservationObj, itemID, updates = {}) {
+  const instanceID = reservationObj.itemInstanceID;
+  updates["reservations/" + reservationObj.reservationID] = reservationObj;
+
+  updates["inventory/" + itemID + "/instances/" + instanceID] = null;
+  updates["inventory/" + itemID + "/reservedInstances/" + instanceID] = true;
+  updates["inventoryInstances/" + instanceID + "/reservationID"] =
+    reservationObj.reservationID;
 
   firebase.database().ref().update(updates);
 }
