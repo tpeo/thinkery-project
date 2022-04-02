@@ -61,9 +61,7 @@ function InventoryTable({ fromEmployee = false }) {
   const allInventory = Object.values(inventoryData || {}).map((item) => {
     return {
       ...item,
-      quantity:
-        Object.keys(item?.instances ?? {}).length +
-        Object.keys(item?.reservedInstances ?? {}).length,
+      quantity: Object.keys(item?.instances ?? {}).length,
     };
   });
 

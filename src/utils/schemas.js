@@ -25,8 +25,7 @@ export const inventoryItem = {
   brand: "",
   description: "",
   lastReorderDate: "",
-  instances: {}, // available instances, maps instanceID to true
-  reservedInstances: {}, // reserved instances, maps instanceID to true
+  instances: {}, // available instances, maps instanceID to TRUE if reserved and FALSE if not
 };
 
 export const instanceItem = {

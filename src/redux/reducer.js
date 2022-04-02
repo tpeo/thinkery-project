@@ -1,7 +1,7 @@
 const defaultState = {
   user: {
-    employeeID: "",
-    type: global.ADMINISTRATOR,
+    employeeID: "EM1847",
+    type: global.EMPLOYEE,
   },
   orderRequests: {},
   employees: {},

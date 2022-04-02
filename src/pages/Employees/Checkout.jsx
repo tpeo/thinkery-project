@@ -85,13 +85,15 @@ function Checkout() {
               borderWidth: 1,
             }}
           >
-            {Object.keys(inventoryItems?.[itemID]?.instances ?? {}).map(
-              (instanceID) => (
+            {Object.keys(inventoryItems?.[itemID]?.instances ?? {})
+              .filter(
+                (instanceID) => !inventoryItems?.[itemID]?.instances[instanceID]
+              )
+              .map((instanceID) => (
                 <Select.Option key={instanceID} value={instanceID}>
                   {instanceID}
                 </Select.Option>
-              )
-            )}
+              ))}
           </Select>
         </Form.Item>
         <Form.Item label="Start Date" name="startDate">
@@ -153,6 +155,7 @@ function Checkout() {
             htmlType="submit"
             disabled={!itemID || instances.length <= 0}
             onClick={checkOutInstances}
+            href="/emp/reservations"
           >
             Submit
           </Button>

@@ -55,16 +55,16 @@ function InventoryInstancesTable({ inventoryItem }) {
   const inventoryInstances = useSelector((state) => state.inventoryInstances);
   const reservations = useSelector((state) => state.reservations);
 
-  const itemInstances = Object.keys(inventoryItem?.instances ?? {})
-    .concat(Object.keys(inventoryItem?.reservedInstances ?? {}))
-    .map((instanceID) => {
+  const itemInstances = Object.keys(inventoryItem?.instances ?? {}).map(
+    (instanceID) => {
       const instanceObj = inventoryInstances?.[instanceID] ?? {};
       return {
         ...EMPTY_INSTANCE,
         ...instanceObj,
         ...reservations?.[instanceObj.reservationID],
       };
-    });
+    }
+  );
 
   return <Table dataSource={itemInstances} columns={columns} />;
 }

@@ -46,16 +46,18 @@ function addReservation(reservationObj, itemID, updates = {}) {
   const instanceID = reservationObj.itemInstanceID;
   updates["reservations/" + reservationObj.reservationID] = reservationObj;
 
-  updates["inventory/" + itemID + "/instances/" + instanceID] = null;
-  updates["inventory/" + itemID + "/reservedInstances/" + instanceID] = true;
+  updates["inventory/" + itemID + "/instances/" + instanceID] = true;
   updates["inventoryInstances/" + instanceID + "/reservationID"] =
     reservationObj.reservationID;
 
   firebase.database().ref().update(updates);
 }
 
-function removeReservation(reservationUid, updates = {}) {
-  updates["reservations/" + reservationUid] = null;
+function removeReservation(reservationID, itemID, instanceID, updates = {}) {
+  updates["reservations/" + reservationID] = null;
+
+  updates["inventory/" + itemID + "/instances/" + instanceID] = false;
+  updates["inventoryInstances/" + instanceID + "/reservationID"] = null;
 
   firebase.database().ref().update(updates);
 }
@@ -98,7 +100,7 @@ function addInventoryInstanceItem(inventoryInstanceObj, updates = {}) {
       inventoryInstanceObj.itemID +
       "/instances/" +
       inventoryInstanceObj.instanceID
-  ] = true;
+  ] = false;
 
   firebase.database().ref().update(updates);
 }
