@@ -24,29 +24,6 @@ function LoginPage() {
           <AdminLoginForm />
         </Col>
       </Row>
-      {/* <h3 className={"LabelReg"}>
-        Don't have an account?&nbsp;
-        <p
-          className={"Link"}
-          onClick={() => {
-            History.push("/signup");
-          }}
-        >
-          Sign up!
-        </p>
-      </h3>
-      <h3
-        className={"LabelReg"}
-        style={{
-          textDecoration: "underline",
-          display: "inline-block",
-        }}
-        onClick={() => {
-          History.push("/retrieve_credentials");
-        }}
-      >
-        Forgot password?
-      </h3> */}
     </div>
   );
 }

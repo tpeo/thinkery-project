@@ -1,5 +1,4 @@
 import React, { PureComponent, useState } from "react";
-import History from "../../navigation/History";
 import "../../style/App.css";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import logo from "../../images/thinkery-logo.svg";

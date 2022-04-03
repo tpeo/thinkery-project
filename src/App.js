@@ -3,8 +3,7 @@ import firebase from "./utils/firebase";
 import "./style/App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./navigation/Routes";
-import History from "./navigation/History";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import {
   addEmployee,
   addInventoryInstanceItem,
@@ -16,8 +15,10 @@ import {
   removeInventoryItem,
   removeOrderRequest,
   removeReservation,
+  setUser,
 } from "./redux/actions";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useHistory } from "react-router-dom";
 
 global.ADMINISTRATOR = 1;
 global.EMPLOYEE = 2;
@@ -33,6 +34,8 @@ const onChildRemoved = (path, callback) => {
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const isLoggedIn = useSelector((state) => state.loggedIn);
 
   const attachListeners = () => {
     onChildAddedOrChanged("/orderRequests", (snapshot) => {
@@ -76,18 +79,26 @@ function App() {
       if (user) {
         var uid = user.uid;
         console.log(uid);
-        // TODO: Set user in redux in the future once we have more info
+        console.log(isLoggedIn);
+        if (isLoggedIn == false) {
+          dispatch(
+            setUser({
+              employeeID: "",
+              type: global.ADMINISTRATOR,
+            })
+          );
+        }
       } else {
         console.log("signed out");
       }
     });
 
     attachListeners();
-  }, []);
+  }, [history, isLoggedIn]);
 
   return (
     <div className="App">
-      <Router history={History}>
+      <Router>
         <Routes />
       </Router>
     </div>

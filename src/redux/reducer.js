@@ -1,8 +1,9 @@
 const defaultState = {
   user: {
-    employeeID: "EM1847",
-    type: global.EMPLOYEE,
+    employeeID: "",
+    type: global.ADMINISTRATOR,
   },
+  loggedIn: false,
   orderRequests: {},
   employees: {},
   reservations: {},
@@ -16,6 +17,7 @@ function reducer(state = defaultState, action) {
       return {
         ...state,
         user: action.payload,
+        loggedIn: true,
       };
     case "ADD_ORDER_REQUEST":
       return {
